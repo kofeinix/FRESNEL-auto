@@ -33,7 +33,7 @@ how_much_files=10
 
 #All data will be labeled with a number starting from start_i.
 #If rinning the code several times, this should be changed not to over-write data.
-start_i=1010
+start_i=0
 
 #If you wish to clean all the data in the folder, for example if you found a mistake in the scheme, make this True
 clean_start=False

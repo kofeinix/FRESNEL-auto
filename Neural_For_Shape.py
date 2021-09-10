@@ -128,6 +128,7 @@ if compression==True:
     train_arr=train_arr[:,np.arange(0,1024,compression_rate)]
     train_labels=train_labels[:,np.arange(0,1024,compression_rate)]
     input_shape=len(np.arange(0,1024,compression_rate))
+    output_shape=len(np.arange(0,1024,compression_rate))
 
 # END OF COMPRESSION
 
@@ -175,20 +176,9 @@ while True:
         print('not an option\n')
         continue
         
-    
-
-
-
-
+ 
         
 #evaluation=optimizer([8,16,32])
-
-    
-
-
-
-
-
 #evaluation=optimizer([8,16])
 #additional_training(new_history, 2)
 #plotting()
