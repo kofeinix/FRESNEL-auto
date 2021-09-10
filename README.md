@@ -4,7 +4,6 @@
 
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -20,6 +19,7 @@ However, the shape of the input beam, that is needed to receive the desired squa
 
 
 ## How the laser is modelled
+[![FRESNEL][FRESNEL-shield]][FRESNEL-url]
 
 There are many different software for optical calculations. In this work, [FRESNEL](http://www.wavesimsoft.ru/) is used. 
 This program is based on Fresnel diffraction theory, includes all the necessary phenomena like gain saturation, pulse shape distortion etc.
@@ -98,3 +98,5 @@ Project Link: [https://github.com/kofeinix/FRESNEL-auto](https://github.com/kofe
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/iu-kochetkov/
+[FRESNEL-shield]: http://www.wavesimsoft.ru/images/wslogo.gif
+[FRESNEL-url]: http://www.wavesimsoft.ru/
