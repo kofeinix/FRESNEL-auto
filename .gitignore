@@ -1,2 +1,2 @@
-# ignore a neural network for the moment
-Neural_For_Shape.py
+# data
+*.txt

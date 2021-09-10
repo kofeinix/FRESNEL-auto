@@ -29,17 +29,17 @@ def paste(text: str):
 wait_time=15
 
 #define how many files should be generated
-how_much_files=5
+how_much_files=10
 
 #All data will be labeled with a number starting from start_i.
 #If rinning the code several times, this should be changed not to over-write data.
-start_i=0
+start_i=1010
 
 #If you wish to clean all the data in the folder, for example if you found a mistake in the scheme, make this True
 clean_start=False
 
 #If you already have an input and want to receive an output, put the input name here.
-input_name='S1'
+input_name='S1000'
 
 #all path should be set according to the data and Fresnel.exe location
 path_to_screenshots='K:\\Work\\Python\\GitHub\\Fresnel\\Screenshots\\'
@@ -51,22 +51,10 @@ pulse_name='K:\Work\Fresnel\Fresnel_examples\Pulse_initial.pls'
 
 #the random input and corresponding output files folder location
 pusle_shape_folder='K:\\Work\\Python\\GitHub\\Fresnel\\Shapes\\'
-try:
-    os.mkdir(pusle_shape_folder+'In\\')
-    os.mkdir(pusle_shape_folder+'Out\\')
-except:
-    pass
-
-if clean_start==True:
-    if (pyautogui.confirm('All files at '+pusle_shape_folder+'Out\\ will be deleted! Confirm?'))=='Cancel':
-        sys.exit(0)
-        
-    files = glob.glob(pusle_shape_folder+'Out\\*')
-    for f in files:
-        os.remove(f)
 
 
-def generator_many_files(start_i, samples_num):
+
+def generator_many_files(start_i, samples_num, pusle_shape_folder=pusle_shape_folder):
     i=start_i
     os.startfile(path_to_fresnel)
     time.sleep(3)    
@@ -213,7 +201,7 @@ def generator_many_files(start_i, samples_num):
 
 #If you want to generate output upon already present input
 
-def generate_one(input_name):
+def generate_one(input_name, pusle_shape_folder=pusle_shape_folder):
 
     os.startfile(path_to_fresnel)
     time.sleep(3)    
@@ -289,6 +277,20 @@ def generate_one(input_name):
     return()
        
 if __name__ == "__main__":
+    try:
+        os.mkdir(pusle_shape_folder+'In\\')
+        os.mkdir(pusle_shape_folder+'Out\\')
+    except:
+        pass
+    
+    if clean_start==True:
+        if (pyautogui.confirm('All files at '+pusle_shape_folder+'Out\\ will be deleted! Confirm?'))=='Cancel':
+            sys.exit(0)
+            
+        files = glob.glob(pusle_shape_folder+'Out\\*')
+        for f in files:
+            os.remove(f)
+        
     answer=pyautogui.confirm(text='Please choose', title='Choice', buttons=['Single', 'Multiple'])
     if answer=='Single':
         if input_name==False:
@@ -296,7 +298,7 @@ if __name__ == "__main__":
             sys.exit(0)
         if os.path.isfile(pusle_shape_folder+'In\\'+input_name+'.txt') ==False:
             pyautogui.alert(text='File Not Found! Make sure that the input file name is'+input_name+'.txt and it is located in Shapes//In folder!', title='Error 404', button='OK')
-            
+            sys.exit(0)            
         if pyautogui.confirm(text='Start calculation for the '+input_name+' file? Output file "Out'+input_name+'.txt" will be created and may overwrite already present file', title='Start', buttons=['Yes', 'No']) == 'Yes':
             generate_one(input_name)
         else:
